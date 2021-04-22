@@ -13,7 +13,6 @@ namespace SalesWebMvc.Models
         public Departament Departament { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
-
         public Seller() { }
         public Seller(int id, string name, string email, DateTime birthDate, double baseSalary, Departament departament)
         {
@@ -25,21 +24,24 @@ namespace SalesWebMvc.Models
             Departament = departament;
         }
 
-
-
-        public void AddSales(SalesRecord sr)
+       public void AddSales(SalesRecord sr)
         {
             Sales.Add(sr);
         }
 
         public void RemoveSales(SalesRecord sr)
         {
-            Sales.Remove(sr);
+            Sales.Add(sr);
+
         }
 
-        public double TotalSales(DateTime initial,   DateTime final)
+        public double TotalSales(DateTime initial,DateTime final)
         {
-            return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
+            return Sales.Where(sale => sale.Date >= initial && sale.Date <= final).Sum(sale => sale.Amount);
         }
+
+
+
+
     }
 }
