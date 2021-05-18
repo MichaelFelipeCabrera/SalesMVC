@@ -109,7 +109,7 @@ namespace SalesWebMvc.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
